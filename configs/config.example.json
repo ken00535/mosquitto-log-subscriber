@@ -1,0 +1,15 @@
+{
+    "hosts": [
+        {
+            "ip": "127.0.0.1",
+            "port": 8883,
+            "username": "username",
+            "password": "password",
+            "caPath": "./configs/ssl/server.pem",
+            "certPath": "./configs/ssl/cert.crt",
+            "keyPath": "./configs/ssl/key.key"
+        }
+    ],
+    "level": "all",
+    "outputFile": "mosquitto.log"
+}

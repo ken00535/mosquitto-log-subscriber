@@ -1,0 +1,6 @@
+bin
+configs/config.json
+configs/ssl/*
+!configs/ssl/.gitkeep
+.vscode
+*.log
