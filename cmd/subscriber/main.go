@@ -28,7 +28,6 @@ func main() {
 		Use:   "subscriber",
 		Short: "Subscriber to subscribes mosquitto log",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println(hosts)
 			Subscribe(hosts[0])
 		},
 	}

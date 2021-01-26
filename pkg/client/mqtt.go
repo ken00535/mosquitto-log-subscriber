@@ -54,6 +54,7 @@ func NewClient(host Host) (mqtt.Client, error) {
 		Certificates:       []tls.Certificate{cert},
 	}
 	opts.SetTLSConfig(&tlsConfig)
+	opts.SetClientID("log-subscriber")
 	client := mqtt.NewClient(opts)
 
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
