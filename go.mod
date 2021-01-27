@@ -7,11 +7,13 @@ require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/google/subcommands v1.2.0
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
+	github.com/influxdata/influxdb v1.8.3
 	github.com/magiconair/properties v1.8.4 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/pelletier/go-toml v1.8.1 // indirect
 	github.com/posener/complete/v2 v2.0.1-alpha.12
 	github.com/posener/script v1.1.5 // indirect
+	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/afero v1.5.1 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/spf13/cobra v1.1.1

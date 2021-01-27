@@ -3,11 +3,15 @@ package client
 import (
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"io/ioutil"
 	"strconv"
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/sirupsen/logrus"
 )
+
+var log = logrus.New()
 
 type Host struct {
 	IP       string `json:"ip"`
@@ -19,8 +23,7 @@ type Host struct {
 	KeyPath  string `json:"keyPath"`
 }
 
-// NewClient new a mqtt client
-func NewClient(host Host) (mqtt.Client, error) {
+func newClient(host Host) (mqtt.Client, error) {
 	certpool := x509.NewCertPool()
 	// config.CAPath = filepath.Join(path, path.CaPath)
 	// config.CertPath = filepath.Join(path, path.CertPath)
@@ -55,10 +58,12 @@ func NewClient(host Host) (mqtt.Client, error) {
 	}
 	opts.SetTLSConfig(&tlsConfig)
 	opts.SetClientID("log-subscriber")
-	client := mqtt.NewClient(opts)
+	opts.SetOnConnectHandler(subscribeTopic)
 
-	if token := client.Connect(); token.Wait() && token.Error() != nil {
-		return nil, token.Error()
+	client := mqtt.NewClient(opts)
+	token := client.Connect()
+	if token.Wait() && token.Error() != nil {
+		fmt.Println(token.Error())
 	}
 
 	return client, nil
